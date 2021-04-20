@@ -167,7 +167,7 @@ padding:2rem;
 
 @media (max-width:540px){
     min-height:40vh;
-    height:90vh;
+    max-height:90vh;
 }
 `;
 const EnddOfMessage =styled.div`
