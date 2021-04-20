@@ -8,15 +8,17 @@ import { getReciepientEmail } from "../../utils/getReciepientEmail";
 import { useState } from "react";
 import { IconButton } from "@material-ui/core";
 import { ChatOutlined } from "@material-ui/icons";
+import { useRouter } from "next/router";
 
 const Chat = ({ chat ,messages}) => {
+    const router =useRouter()
     console.log(chat, messages);
     const [user] =useAuthState(auth)
-    const [open,setOpen] =useState(true)
+    const [open,setOpen] =useState(false)
     return (
         <Container>
             <SidebarContainer>
-                <Sidebar onClickChat={()=>{setOpen(prevState=>!prevState)}}></Sidebar>
+                <Sidebar onClickChat={()=>{setOpen(false)}}></Sidebar>
 
             </ SidebarContainer>
                 
@@ -26,7 +28,10 @@ const Chat = ({ chat ,messages}) => {
             </MobileNavContainer>:null}
             
             <ToggleWrapper>
-                <Toggler onClick ={()=>{setOpen(prevState=>!prevState)}}><ChatOutlined color="white"/></Toggler>
+                <Toggler onClick ={()=>{
+                    router.push('/')
+                    setOpen(true)
+                }}><ChatOutlined color="white"/></Toggler>
             </ToggleWrapper>
             
             
