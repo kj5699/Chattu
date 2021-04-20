@@ -1,4 +1,3 @@
-import { ModeCommentTwoTone } from '@material-ui/icons';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import styled from 'styled-components';
 import { auth } from '../firebase';
