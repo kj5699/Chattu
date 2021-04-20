@@ -161,14 +161,11 @@ word-break:break-word;
 const HeaderIcons=styled.div``;
 
 const MessageContainer=styled.div`
-min-height:90vh;
+min-height:85vh;
 background-color:#e5ded8;
 padding:2rem;
 
-@media (max-width:540px){
-    min-height:40vh;
-    max-height:90vh;
-}
+
 `;
 const EnddOfMessage =styled.div`
     margin-bottom:50px;
