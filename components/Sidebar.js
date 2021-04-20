@@ -20,7 +20,6 @@ function sidebar(props) {
         if (!input){ 
             console.log('no input')
             return null;}
-        console.log(input)
         if (EmailValidator.validate(input) && user.email !== input && !chatAlreadyExists(input)){
             db.collection('chats').add({
                 users:[user.email, input],
@@ -32,7 +31,6 @@ function sidebar(props) {
 
         const chatExists= chatsSnapshot?.docs.find(chat=>
             chat.data().users.find(user=> user === recipientEmail)?.length>0)
-        console.log(chatExists)
         return !!chatExists
         }
 

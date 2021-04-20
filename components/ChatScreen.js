@@ -19,9 +19,6 @@ const ChatScreen = ({chat, messages}) => {
     const recipientEmail =getReciepientEmail(chat.users,user)
     const [messagesSnapshot]=useCollection(db.collection('chats').doc(router.query.id).collection('messages').orderBy('timestamp','asc'))
     const [recipientSnapshot] = useCollection(db.collection('users').where('email','==', recipientEmail))
-
-    
-
     const sendMessage=(e)=>{
         e.preventDefault();
         db.collection("users").doc(user.uid).set({
@@ -125,6 +122,8 @@ const ChatScreen = ({chat, messages}) => {
 export default ChatScreen
 
 const Container=styled.div`
+height:100vh;
+max-height:100vh;
 
 `;
 const Header =styled.div`
@@ -163,7 +162,7 @@ word-break:break-word;
 const HeaderIcons=styled.div``;
 
 const MessageContainer=styled.div`
-min-height:90vh;
+min-height:85vh;
 background-color:#e5ded8;
 padding:2rem;
 `;
