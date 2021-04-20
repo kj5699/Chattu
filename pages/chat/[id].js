@@ -26,7 +26,7 @@ const Chat = ({ chat ,messages}) => {
             </MobileNavContainer>:null}
             
             <ToggleWrapper>
-                <Toggler onClick ={()=>{setOpen(prevState=>!prevState)}}><ChatOutlined /></Toggler>
+                <Toggler onClick ={()=>{setOpen(prevState=>!prevState)}}><ChatOutlined color="white"/></Toggler>
             </ToggleWrapper>
             
             
@@ -123,7 +123,7 @@ display:none;
     :active,
     :after,
     :focus{
-        background-color: whitesmoke;
+        background-color: lightgreen;
     }
 
 
@@ -133,6 +133,7 @@ const Toggler = styled(IconButton)`
     width:50px;
     height:50px;
     z-index:500;
+    
     :hover {
         background-color:grey;
     }
