@@ -52,7 +52,7 @@ export async function getServerSideProps(context) {
 }
 
 const Container =styled.div`
-display:flex;
+    display:flex;
 
 `;
 
