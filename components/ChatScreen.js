@@ -123,7 +123,6 @@ export default ChatScreen
 
 const Container=styled.div`
 height:100vh;
-max-height:100vh;
 
 `;
 const Header =styled.div`

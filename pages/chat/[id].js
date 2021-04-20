@@ -82,7 +82,7 @@ padding:0;
 const MobileNavContainer =styled.div`
 margin:0;
 padding:0;
-@media (min-width:540px){
+@media (min-width:541px){
     display:none
 }
 
@@ -92,7 +92,7 @@ padding:0;
 const ChatContainer =styled.div`
  flex:1;
  overflow:scroll;
- height:100vh;
+ max-height:100vh;
 
  ::-webkit-scrollbar {
   display: none;
@@ -101,6 +101,7 @@ const ChatContainer =styled.div`
 
 -ms-overflow-style: none;
 scrollbar-width: none;
+
 
 
 `;
