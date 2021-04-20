@@ -21,12 +21,12 @@ const Chat = ({ chat ,messages}) => {
             </ SidebarContainer>
                 
             {open?<MobileNavContainer>
-                <Sidebar onClickChat={()=>{setOpen(prevState=>!prevState)}}></Sidebar>
+                <Sidebar onClickChat={()=>{setOpen(false)}}></Sidebar>
 
             </MobileNavContainer>:null}
             
             <ToggleWrapper>
-                <Toggler onClick ={()=>{setOpen(false)}}><ChatOutlined /></Toggler>
+                <Toggler onClick ={()=>{setOpen(prevState=>!prevState)}}><ChatOutlined /></Toggler>
             </ToggleWrapper>
             
             
