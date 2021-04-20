@@ -123,6 +123,9 @@ export default ChatScreen
 
 const Container=styled.div`
 height: 100vh;
+@media (max-width:540px){
+    height: 95vh;
+}
 
 `;
 const Header =styled.div`
@@ -161,7 +164,7 @@ word-break:break-word;
 const HeaderIcons=styled.div``;
 
 const MessageContainer=styled.div`
-min-height:85vh;
+min-height:85%;
 background-color:#e5ded8;
 padding:2rem;
 `;
