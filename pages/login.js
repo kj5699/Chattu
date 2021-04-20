@@ -16,7 +16,8 @@ const login = () => {
 
             <LoginContainer>
                 {/* <h1>Login Page</h1> */}
-                <Logo src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/897px-WhatsApp.svg.png" alt='whatsapp logo' />
+                <Logo src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/897px-WhatsApp.svg.png" 
+                alt='whatsapp logo' />
                 <Button onClick={signIn} variant='outlined'>Sign Up with Google</Button>
             </LoginContainer>
             
@@ -50,6 +51,5 @@ const Logo =styled.img`
     height:200px;
     width:200px;
     margin-bottom:3rem
-
 `;
 

@@ -5,7 +5,7 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import {db, auth} from '../firebase';
 import {useRouter} from 'next/router';
 
-const Chat = ({id, users, userLoggedIn}) => {
+const Chat = ({id, users, userLoggedIn,onClickChat}) => {
     const router =useRouter()
     const recipientEmail= getReciepientEmail(users, userLoggedIn)
     const [recipientSnapshot] = useCollection(
@@ -13,6 +13,7 @@ const Chat = ({id, users, userLoggedIn}) => {
     )
     const enterChat =()=>{
         router.push(`/chat/${id}`)
+        onClickChat?onClickChat():null;
     }
     const recipient = recipientSnapshot?.docs?.[0]?.data();
     return (
@@ -22,7 +23,11 @@ const Chat = ({id, users, userLoggedIn}) => {
             <UserAvatar >{recipientEmail[0]}</UserAvatar>
             }
             
-            <p>{recipientEmail}</p>
+            {recipient&& recipient.name ?<p>
+                {recipient.name}
+            </p>:
+            
+            <p>{recipientEmail}</p>}
 
 
         </Container>
@@ -39,6 +44,7 @@ const Container =styled.div`
     cursor: pointer;
     padding: 0.93rem;
     word-break:break-word;
+    border-bottom: 1px solid whitesmoke;
 
     :hover{
         background-color: #e9eaeb;

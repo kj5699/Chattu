@@ -1,5 +1,5 @@
-import { Avatar, IconButton } from '@material-ui/core'
-import { AttachmentSharp, InsertEmoticonSharp, MicOutlined, MoreVertSharp } from '@material-ui/icons';
+import { Avatar ,IconButton} from '@material-ui/core'
+import { AttachmentSharp, ChatOutlined, InsertEmoticonSharp, MicOutlined, MoreVertSharp } from '@material-ui/icons';
 import { useRouter } from 'next/router';
 import { useState ,useRef} from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -70,6 +70,8 @@ const ChatScreen = ({chat, messages}) => {
     const recipient =recipientSnapshot?.docs?.[0]?.data();
 
     return (
+        
+        
         <Container>
             <Header>
                 {recipient ? 
@@ -78,7 +80,7 @@ const ChatScreen = ({chat, messages}) => {
                 }
                 
                 <HeaderInformation>
-                    <h3>{recipientEmail}</h3>
+                    <h3>{recipient ? recipient.name :recipientEmail}</h3>
                     {
                         recipientSnapshot ? 
                         <p>Last Active : {' '}
@@ -123,6 +125,7 @@ const ChatScreen = ({chat, messages}) => {
 export default ChatScreen
 
 const Container=styled.div`
+
 `;
 const Header =styled.div`
 position:sticky;
@@ -135,17 +138,24 @@ align-items:center;
 border-bottom: 1px solid whitesmoke;
 `;
 const HeaderInformation=styled.div`
+
 margin-left:1rem;
 flex:1;
+word-break:break-word;
 
 >h3{
     margin:0;
     margin-bottom :3px;
+    width:fit-content;
+    word-break:break;
+    word-wrap:break-word;
 }
 >p {
     margin:0;
     font-size:14px;
-    color:gray;
+    color: gray;
+    width: fit-content;
+    word-wrap: break-word;
 }
 
 
@@ -178,3 +188,4 @@ background-color:whitesmoke;
 padding:1rem;
 margin: 0 1rem;
 `;
+

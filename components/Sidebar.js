@@ -9,7 +9,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import Chat from './Chat';
 
-function sidebar() {
+function sidebar(props) {
     
     const [user] =useAuthState(auth);
     const userChatRef = db.collection('chats').where('users' ,'array-contains', user.email)
@@ -60,7 +60,11 @@ function sidebar() {
             </SidebarButton>
 
             {chatsSnapshot?.docs.map(chat=> (
-                <Chat key={chat.id} id={chat.id} users={chat.data().users} userLoggedIn={user}
+                <Chat key={chat.id} 
+                        id={chat.id} 
+                        users={chat.data().users} 
+                        userLoggedIn={user}
+                        onClickChat={props.onClickChat}
                 ></Chat>
             ))}
             
@@ -75,9 +79,12 @@ const Container =styled.div`
 flex:0.45;
 border-right: 1px solid whitesmoke;
 height:100vh;
-min-width:19rem;
-max-width:22rem;
+width:30vw;
+min-width:30vw;
+max-width:45vw;
 overflow-y:scroll;
+
+
 
 ::-webkit-scrollbar{
     display:none;
@@ -85,6 +92,13 @@ overflow-y:scroll;
 
 -ms-overflow-style:none;
 scrollbar-width: none;
+
+@media (max-width:540px){
+    width:100vw;
+    min-width:100vw;
+    max-width:100vw;
+
+}
 
 
 `;

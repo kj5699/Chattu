@@ -5,22 +5,39 @@ import ChatScreen from "../../components/ChatScreen";
 import {db , auth} from "../../firebase"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getReciepientEmail } from "../../utils/getReciepientEmail";
+import { useState } from "react";
+import { IconButton } from "@material-ui/core";
+import { ChatOutlined } from "@material-ui/icons";
 
 const Chat = ({ chat ,messages}) => {
     console.log(chat, messages);
     const [user] =useAuthState(auth)
+    const [open,setOpen] =useState(true)
     return (
         <Container>
-            <Head>
-                <title>Chat with {getReciepientEmail(chat.users, user)}</title>
-            </Head>
-                
+            <SidebarContainer>
+                <Sidebar onClickChat={()=>{setOpen(prevState=>!prevState)}}></Sidebar>
 
-            <Sidebar></Sidebar>
+            </ SidebarContainer>
+                
+            {open?<MobileNavContainer>
+                <Sidebar onClickChat={()=>{setOpen(prevState=>!prevState)}}></Sidebar>
+
+            </MobileNavContainer>:null}
+            
+            <ToggleWrapper>
+                <Toggler onClick ={()=>{setOpen(prevState=>!prevState)}}><ChatOutlined /></Toggler>
+            </ToggleWrapper>
+            
+            
             <ChatContainer>
-                <ChatScreen chat={chat} messages={messages}></ChatScreen>
+                <ChatScreen chat={chat} messages={messages} ></ChatScreen>
             </ChatContainer>
+
+            
         </Container>
+        
+
     )
 }
 
@@ -55,7 +72,23 @@ const Container =styled.div`
     display:flex;
 
 `;
+const SidebarContainer =styled.div`
+margin:0;
+padding:0;
+@media (max-width:540px){
+    display:none
+}`;
 
+const MobileNavContainer =styled.div`
+margin:0;
+padding:0;
+@media (min-width:540px){
+    display:none
+}
+
+
+
+`;
 const ChatContainer =styled.div`
  flex:1;
  overflow:scroll;
@@ -71,3 +104,38 @@ scrollbar-width: none;
 
 
 `;
+
+const ToggleWrapper=styled.div`
+
+display:none;
+@media (max-width:540px){
+    position:absolute;
+    display:inline;
+    top:80vh;
+    left:80vw;
+    background-color:white;
+    z-index:500;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    :hover,
+    :active,
+    :after,
+    :focus{
+        background-color: whitesmoke;
+    }
+
+
+}`;
+
+const Toggler = styled(IconButton)`
+    width:50px;
+    height:50px;
+    z-index:500;
+    :hover {
+        background-color:grey;
+    }
+`;
+
+
+
