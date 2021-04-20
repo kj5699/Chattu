@@ -26,7 +26,7 @@ const Chat = ({ chat ,messages}) => {
             </MobileNavContainer>:null}
             
             <ToggleWrapper>
-                <Toggler onClick ={()=>{setOpen(prevState=>!prevState)}}><ChatOutlined /></Toggler>
+                <Toggler onClick ={()=>{setOpen(false)}}><ChatOutlined /></Toggler>
             </ToggleWrapper>
             
             
